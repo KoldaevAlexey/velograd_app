@@ -3,7 +3,7 @@ import React, { useLayoutEffect } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useNavigation } from "@react-navigation/native";
 
-const CatalogScreen = () => {
+const AboutScreen = () => {
     const navigation = useNavigation();
 
     useLayoutEffect(() => {
@@ -12,11 +12,7 @@ const CatalogScreen = () => {
         });
     }, []);
 
-    return (
-        <SafeAreaView className="bg-blue-500 h-full p-5">
-            <Text>CatalogScreen</Text>
-        </SafeAreaView>
-    );
+    return <SafeAreaView className="bg-blue-500 h-full p-5"></SafeAreaView>;
 };
 
-export { CatalogScreen };
+export { AboutScreen };

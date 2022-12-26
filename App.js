@@ -1,5 +1,4 @@
 import { StatusBar } from "expo-status-bar";
-import { Text, View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Ionicons from "@expo/vector-icons/Ionicons";
@@ -34,8 +33,9 @@ export default function App() {
                             />
                         );
                     },
-                    tabBarActiveTintColor: "tomato",
-                    tabBarInactiveTintColor: "gray",
+                    tabBarActiveTintColor: "gray",
+                    tabBarInactiveTintColor: "white",
+                    tabBarStyle: { backgroundColor: "#242C3B" },
                 })}
             >
                 <Tab.Screen name="Главная" component={HomeScreen} />
