@@ -3,7 +3,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Ionicons from "@expo/vector-icons/Ionicons";
 
-import { HomeScreen } from "./screens/HomeScreen";
+import { HomeStackScreen } from "./screens/HomeStackScreen";
 import { AboutScreen } from "./screens/AboutScreen";
 import { CatalogScreen } from "./screens/CatalogScreen";
 
@@ -36,9 +36,10 @@ export default function App() {
                     tabBarActiveTintColor: "gray",
                     tabBarInactiveTintColor: "white",
                     tabBarStyle: { backgroundColor: "#242C3B" },
+                    headerShown: false,
                 })}
             >
-                <Tab.Screen name="Главная" component={HomeScreen} />
+                <Tab.Screen name="Главная" component={HomeStackScreen} />
                 <Tab.Screen name="Каталог" component={CatalogScreen} />
                 <Tab.Screen name="Еще" component={AboutScreen} />
             </Tab.Navigator>

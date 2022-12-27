@@ -1,9 +1,13 @@
-import { View, Text, Image } from "react-native";
+import { View, Text, Image, Button } from "react-native";
 import React from "react";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
-const CategoryCard = ({ image, title }) => {
+const CategoryCard = ({ image, title, navigation }) => {
     return (
-        <View className="mx-2 items-center h-20">
+        <TouchableOpacity
+            onPress={() => navigation.navigate("Category", { title })}
+            className="mx-2 items-center h-20"
+        >
             <Image
                 source={{
                     uri: image,
@@ -11,7 +15,7 @@ const CategoryCard = ({ image, title }) => {
                 className="w-20 h-20 rounded-full"
             />
             <Text className="my-5">{title}</Text>
-        </View>
+        </TouchableOpacity>
     );
 };
 

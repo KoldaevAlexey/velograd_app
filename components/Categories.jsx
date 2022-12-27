@@ -4,7 +4,7 @@ import { CategoryCard } from "./CategoryCard";
 
 import { categoryCardData } from "../assets/mockData/data";
 
-const Categories = () => {
+const Categories = ({ navigation }) => {
     return (
         <View className="h-48">
             <Text className="text-lg my-5 font-bold text-center">
@@ -19,7 +19,11 @@ const Categories = () => {
                 showsHorizontalScrollIndicator={false}
             >
                 {categoryCardData?.map((item) => (
-                    <CategoryCard key={item.id} {...item} />
+                    <CategoryCard
+                        key={item.id}
+                        {...item}
+                        navigation={navigation}
+                    />
                 ))}
             </ScrollView>
         </View>
