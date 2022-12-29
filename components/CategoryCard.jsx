@@ -1,20 +1,20 @@
-import { View, Text, Image, Button } from "react-native";
+import { Text, Image } from "react-native";
 import React from "react";
 import { TouchableOpacity } from "react-native-gesture-handler";
 
-const CategoryCard = ({ image, title, navigation }) => {
+const CategoryCard = ({ id, image, title, navigation }) => {
     return (
         <TouchableOpacity
-            onPress={() => navigation.navigate("Category", { title })}
-            className="mx-2 items-center h-20"
+            onPress={() => navigation.navigate("Category", { title, id })}
+            className="mx-1 items-center h-28"
         >
             <Image
                 source={{
                     uri: image,
                 }}
-                className="w-20 h-20 rounded-full"
+                className="w-24 h-24 rounded-xl"
             />
-            <Text className="my-5">{title}</Text>
+            <Text className="my-5 text-white">{title}</Text>
         </TouchableOpacity>
     );
 };

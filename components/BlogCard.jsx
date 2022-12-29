@@ -10,7 +10,7 @@ const BlogCard = ({ title, image }) => {
                 }}
                 className="h-44 w-full rounded-lg"
             />
-            <Text className="p-2">{title}</Text>
+            <Text className="p-2 text-white">{title}</Text>
         </TouchableOpacity>
     );
 };

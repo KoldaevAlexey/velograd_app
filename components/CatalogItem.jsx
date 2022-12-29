@@ -1,21 +1,40 @@
-import { View, Text, Image, TouchableOpacity } from "react-native";
+import { View, Text, TouchableOpacity, Image } from "react-native";
 import React from "react";
 
-const CatalogItem = ({ id, title, image }) => {
+const CatalogItem = ({
+    id,
+    type,
+    title,
+    description,
+    img,
+    price,
+    navigation,
+}) => {
     return (
-        <View>
-            <TouchableOpacity className="mt-5 flex-row bg-slate-800 p-3 rounded-xl">
-                <Image
-                    source={{
-                        uri: image,
-                    }}
-                    className="w-28 h-28 rounded-2xl"
-                />
-                <Text className="ml-5 text-gray-100 font-bold text-xl">
-                    {title}
-                </Text>
-            </TouchableOpacity>
-        </View>
+        <TouchableOpacity
+            className="w-44 h-64 my-1 mx-2 p-3 flex-col items-center bg-slate-800 rounded-xl"
+            onPress={() =>
+                navigation.navigate("FullItem", {
+                    id,
+                    type,
+                    title,
+                    description,
+                    img,
+                    price,
+                })
+            }
+        >
+            <Image
+                source={{
+                    uri: img,
+                }}
+                className="w-full h-2/3 rounded-2xl"
+            />
+            <Text className="my-2 text-gray-100 font-bold text-l">{title}</Text>
+            <Text className="my-2 text-gray-400 font-bold text-l">
+                {price} руб.
+            </Text>
+        </TouchableOpacity>
     );
 };
 

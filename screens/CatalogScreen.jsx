@@ -5,7 +5,12 @@ import Ionicons from "@expo/vector-icons/Ionicons";
 
 import { Catalog } from "../components/Catalog";
 
-const CatalogScreen = () => {
+const CatalogScreen = ({ navigation }) => {
+    React.useLayoutEffect(() => {
+        navigation.setOptions({
+            headerShown: false,
+        });
+    }, []);
     return (
         <SafeAreaView className="bg-slate-900 h-full p-5">
             <View className="flex-row items-center space-x-2 pb-2 mx-4">
@@ -17,7 +22,7 @@ const CatalogScreen = () => {
                     />
                 </View>
             </View>
-            <Catalog />
+            <Catalog navigation={navigation} />
         </SafeAreaView>
     );
 };

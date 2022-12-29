@@ -10,12 +10,18 @@ import { Categories } from "../components/Categories";
 import { Blogs } from "../components/Blogs";
 
 const HomeScreen = ({ navigation }) => {
+    React.useLayoutEffect(() => {
+        navigation.setOptions({
+            headerShown: false,
+        });
+    }, []);
+
     return (
-        <SafeAreaView className="bg-blue-500 h-full p-1">
+        <SafeAreaView className="bg-slate-900 h-full p-1">
             <ScrollView showsVerticalScrollIndicator={false} className="h-full">
                 <Categories navigation={navigation} />
                 <View>
-                    <Text className="my-5 text-xl font-bold text-center">
+                    <Text className="my-5 text-xl font-bold text-center text-white">
                         Акции
                     </Text>
                     <Carousel

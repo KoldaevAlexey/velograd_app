@@ -6,8 +6,8 @@ import { categoryCardData } from "../assets/mockData/data";
 
 const Categories = ({ navigation }) => {
     return (
-        <View className="h-48">
-            <Text className="text-lg my-5 font-bold text-center">
+        <View className="h-52">
+            <Text className="text-lg my-5 font-bold text-center text-white">
                 Категории товаров
             </Text>
             <ScrollView

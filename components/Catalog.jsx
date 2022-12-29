@@ -2,13 +2,17 @@ import { View, Text, ScrollView } from "react-native";
 import React from "react";
 
 import { categoryCardData } from "../assets/mockData/data";
-import { CatalogItem } from "./CatalogItem";
+import { CatalogCategoryList } from "./CatalogCategoryList";
 
-const Catalog = () => {
+const Catalog = ({ navigation }) => {
     return (
         <ScrollView showsVerticalScrollIndicator={false}>
             {categoryCardData.map((item) => (
-                <CatalogItem key={item.id} {...item} />
+                <CatalogCategoryList
+                    key={item.id}
+                    {...item}
+                    navigation={navigation}
+                />
             ))}
         </ScrollView>
     );
