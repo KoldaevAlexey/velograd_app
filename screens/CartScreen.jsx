@@ -6,18 +6,29 @@ import {
     Button,
     ScrollView,
 } from "react-native";
+import { useSelector, useDispatch } from "react-redux";
+import { clearItems } from "../redux/slices/cartSlice";
 import React from "react";
 
-import { CartContext } from "../App";
 import { CartItem } from "../components/CartItem";
 
 const CartScreen = () => {
-    const { cartItems, setCartItems } = React.useContext(CartContext);
-    console.log(cartItems);
+    const cartItems = useSelector((state) => state.cart.cartItems);
+    const dispatch = useDispatch();
+
+    const totalCount = cartItems.reduce((acc, item) => {
+        return acc + item.count;
+    }, 0);
+
+    const totalPrice = cartItems.reduce((acc, item) => {
+        return acc + item.price * item.count;
+    }, 0);
+
+    console.log(totalCount);
 
     return (
         <SafeAreaView className="bg-slate-900 h-full">
-            <ScrollView>
+            <ScrollView className="p-2">
                 {cartItems.length === 0 ? (
                     <Text className="text-white text-center text-2xl my-64">
                         Корзина пустая, добавьте товар
@@ -30,10 +41,22 @@ const CartScreen = () => {
                     ))
                 )}
                 {cartItems.length > 0 && (
-                    <Button
-                        title="очистить корзину"
-                        onPress={() => setCartItems([])}
-                    ></Button>
+                    <>
+                        <View className="mt-16">
+                            <Button
+                                title="очистить корзину"
+                                onPress={() => dispatch(clearItems())}
+                            ></Button>
+                        </View>
+                        <View className="my-20 p-5">
+                            <Text className="text-white text-lg">
+                                Общая сумма: {totalPrice} руб.
+                            </Text>
+                            <Text className="text-white text-lg">
+                                Количество товаров: {totalCount} шт.
+                            </Text>
+                        </View>
+                    </>
                 )}
             </ScrollView>
         </SafeAreaView>

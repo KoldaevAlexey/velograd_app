@@ -4,11 +4,16 @@ import { ScrollView } from "react-native-gesture-handler";
 import { useRoute } from "@react-navigation/native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
+import { useSelector, useDispatch } from "react-redux";
+import { addItem } from "../redux/slices/cartSlice";
+
 import { itemsData } from "../assets/mockData/data";
-import { CartContext } from "../App.js";
 
 const FullItemScreen = ({ navigation }) => {
     const [modalVisible, setModalVisible] = React.useState(false);
+
+    const cartItems = useSelector((state) => state.cart.cartItems);
+    const dispatch = useDispatch();
 
     React.useLayoutEffect(() => {
         navigation.setOptions({
@@ -17,13 +22,7 @@ const FullItemScreen = ({ navigation }) => {
     }, []);
     const route = useRoute();
 
-    const { cartItems, setCartItems } = React.useContext(CartContext);
-
-    const addCartItem = (id) => {
-        const currentItem = itemsData.filter((item) => item.id === id);
-        setModalVisible(true);
-        setCartItems(currentItem);
-    };
+    console.log(route.params);
 
     return (
         <SafeAreaView className="bg-slate-900 h-full p-2">
@@ -48,7 +47,7 @@ const FullItemScreen = ({ navigation }) => {
                 </View>
                 <Button
                     title="В корзину"
-                    onPress={() => addCartItem(route.params.id)}
+                    onPress={() => dispatch(addItem(route.params))}
                 ></Button>
                 <View>
                     <Modal

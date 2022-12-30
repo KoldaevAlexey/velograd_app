@@ -9,17 +9,14 @@ import { AboutScreen } from "./screens/AboutScreen";
 import { CatalogStackScreen } from "./screens/CatalogStackScreen";
 import { CartScreen } from "./screens/CartScreen";
 
-import { useContext, createContext } from "react";
+import { store } from "./redux/store";
+import { Provider } from "react-redux";
 
 const Tab = createBottomTabNavigator();
 
-export const CartContext = createContext([]);
-
 export default function App() {
-    const [cartItems, setCartItems] = React.useState([]);
-
     return (
-        <CartContext.Provider value={{ cartItems, setCartItems }}>
+        <Provider store={store}>
             <NavigationContainer>
                 <Tab.Navigator
                     screenOptions={({ route }) => ({
@@ -35,6 +32,8 @@ export default function App() {
                                 iconName = focused
                                     ? "bicycle"
                                     : "bicycle-outline";
+                            } else if (route.name === "Корзина") {
+                                iconName = focused ? "cart" : "cart-outline";
                             }
                             return (
                                 <Ionicons
@@ -56,6 +55,6 @@ export default function App() {
                     <Tab.Screen name="Еще" component={AboutScreen} />
                 </Tab.Navigator>
             </NavigationContainer>
-        </CartContext.Provider>
+        </Provider>
     );
 }
