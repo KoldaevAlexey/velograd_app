@@ -10,7 +10,7 @@ export const cartSlice = createSlice({
     reducers: {
         addItem: (state, action) => {
             const duplicate = state.cartItems.find((item) => {
-                item.id === action.payload.id;
+                return item.id === action.payload.id;
             });
             if (duplicate) {
                 duplicate.count++;
@@ -24,7 +24,7 @@ export const cartSlice = createSlice({
         },
         removeItem: (state, action) => {
             state.cartItems = state.cartItems.filter((item) => {
-                item.id !== action.payload;
+                return item.id !== action.payload;
             });
         },
         incrementCount: (state, action) => {
@@ -36,7 +36,7 @@ export const cartSlice = createSlice({
         },
         decrementCount: (state, action) => {
             state.cartItems.forEach((item) => {
-                if (item.id === action.payload && item.count !== 0) {
+                if (item.id === action.payload && item.count !== 1) {
                     item.count--;
                 }
             });

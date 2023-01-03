@@ -1,7 +1,11 @@
 import { View, Text, Image, Button } from "react-native";
 import React from "react";
 
-import { incrementCount, decrementCount } from "../redux/slices/cartSlice";
+import {
+    incrementCount,
+    decrementCount,
+    removeItem,
+} from "../redux/slices/cartSlice";
 import { useSelector, useDispatch } from "react-redux";
 
 const CartItem = ({ id, price, title, img, count }) => {
@@ -33,6 +37,12 @@ const CartItem = ({ id, price, title, img, count }) => {
                             title="-"
                             onPress={() => dispatch(decrementCount(id))}
                         ></Button>
+                        <View className="mx-8">
+                            <Button
+                                title="Удалить"
+                                onPress={() => dispatch(removeItem(id))}
+                            ></Button>
+                        </View>
                     </View>
                 </View>
             </View>

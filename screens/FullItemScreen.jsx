@@ -22,8 +22,6 @@ const FullItemScreen = ({ navigation }) => {
     }, []);
     const route = useRoute();
 
-    console.log(route.params);
-
     return (
         <SafeAreaView className="bg-slate-900 h-full p-2">
             <ScrollView className="h-full">
@@ -37,7 +35,6 @@ const FullItemScreen = ({ navigation }) => {
                     <Text className="my-2 text-gray-100 font-bold text-xl">
                         {route.params.title}
                     </Text>
-
                     <Text className="my-2 text-gray-400 font-bold text-l">
                         {route.params.description}
                     </Text>

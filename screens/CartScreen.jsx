@@ -24,8 +24,6 @@ const CartScreen = () => {
         return acc + item.price * item.count;
     }, 0);
 
-    console.log(totalCount);
-
     return (
         <SafeAreaView className="bg-slate-900 h-full">
             <ScrollView className="p-2">
@@ -35,9 +33,7 @@ const CartScreen = () => {
                     </Text>
                 ) : (
                     cartItems.map((item) => (
-                        <>
-                            <CartItem key={item.id} {...item} />
-                        </>
+                        <CartItem key={item.id} {...item} />
                     ))
                 )}
                 {cartItems.length > 0 && (
