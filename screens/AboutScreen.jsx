@@ -12,7 +12,7 @@ const AboutScreen = () => {
         });
     }, []);
 
-    return <SafeAreaView className="bg-blue-500 h-full p-5"></SafeAreaView>;
+    return <SafeAreaView className="bg-slate-900 h-full"></SafeAreaView>;
 };
 
 export { AboutScreen };
