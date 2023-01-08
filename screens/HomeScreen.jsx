@@ -9,11 +9,33 @@ import { carouselImages } from "../assets/mockData/data";
 import { Categories } from "../components/Categories";
 import { Blogs } from "../components/Blogs";
 
+import { useDispatch, useSelector } from "react-redux"; //1
+import { fetchItemsData } from "../redux/slices/itemsSlice"; //1
+import axios from "axios"; //1
+
 const HomeScreen = ({ navigation }) => {
+    const dispatch = useDispatch(); //1
+
     React.useLayoutEffect(() => {
         navigation.setOptions({
             headerShown: false,
         });
+    }, []);
+
+    React.useEffect(() => {
+        //1
+        try {
+            const fetchData = async () => {
+                const { data } = await axios.get(
+                    "http://192.168.1.256:1337/api/products"
+                );
+                console.log(data);
+                return data;
+            };
+            fetchData();
+        } catch (e) {
+            console.log(e.response.data);
+        }
     }, []);
 
     return (

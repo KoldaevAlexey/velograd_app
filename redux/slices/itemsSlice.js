@@ -3,8 +3,10 @@ import axios from "axios";
 
 export const fetchItemsData = createAsyncThunk(
     "items/fetchItemsData",
-    async (_, { rejectWithValue }) => {
-        const { data } = await axios.get(``);
+    async () => {
+        //console.log("fetch start");
+        const { data } = await axios.get(`http://localhost:1337/api/products`);
+        //console.log("fetch end");
         return data;
     }
 );
