@@ -1,7 +1,7 @@
 import { View, Text, Image, TouchableOpacity } from "react-native";
 import React from "react";
 
-const CatalogCategoryList = ({ id, title, image, navigation }) => {
+const CatalogItem = ({ id, title, imageUrl, navigation }) => {
     return (
         <TouchableOpacity
             className="mt-5 flex-row bg-slate-800 p-3 rounded-xl"
@@ -15,7 +15,7 @@ const CatalogCategoryList = ({ id, title, image, navigation }) => {
         >
             <Image
                 source={{
-                    uri: image,
+                    uri: imageUrl,
                 }}
                 className="w-28 h-28 rounded-2xl"
             />
@@ -26,4 +26,4 @@ const CatalogCategoryList = ({ id, title, image, navigation }) => {
     );
 };
 
-export { CatalogCategoryList };
+export { CatalogItem };

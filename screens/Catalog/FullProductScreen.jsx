@@ -5,11 +5,9 @@ import { useRoute } from "@react-navigation/native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 import { useSelector, useDispatch } from "react-redux";
-import { addItem } from "../redux/slices/cartSlice";
+import { addProduct } from "../../redux/slices/cartSlice";
 
-import { itemsData } from "../assets/mockData/data";
-
-const FullItemScreen = ({ navigation }) => {
+const FullProductScreen = ({ navigation }) => {
     const [modalVisible, setModalVisible] = React.useState(false);
 
     const cartItems = useSelector((state) => state.cart.cartItems);
@@ -44,7 +42,7 @@ const FullItemScreen = ({ navigation }) => {
                 </View>
                 <Button
                     title="В корзину"
-                    onPress={() => dispatch(addItem(route.params))}
+                    onPress={() => dispatch(addProduct(route.params))}
                 ></Button>
                 <View>
                     <Modal
@@ -80,4 +78,4 @@ const FullItemScreen = ({ navigation }) => {
     );
 };
 
-export { FullItemScreen };
+export { FullProductScreen };

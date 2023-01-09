@@ -1,20 +1,12 @@
 import { View, Text, TouchableOpacity, Image } from "react-native";
 import React from "react";
 
-const CatalogItem = ({
-    id,
-    type,
-    title,
-    description,
-    img,
-    price,
-    navigation,
-}) => {
+const Product = ({ id, type, title, description, img, price, navigation }) => {
     return (
         <TouchableOpacity
             className="w-44 h-64 my-1 mx-2 p-3 flex-col items-center bg-slate-800 rounded-xl"
             onPress={() =>
-                navigation.navigate("FullItem", {
+                navigation.navigate("FullProduct", {
                     id,
                     type,
                     title,
@@ -38,4 +30,4 @@ const CatalogItem = ({
     );
 };
 
-export { CatalogItem };
+export { Product };

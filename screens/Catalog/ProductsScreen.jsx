@@ -2,14 +2,12 @@ import { View, Text } from "react-native";
 import React from "react";
 import { useRoute } from "@react-navigation/native";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchItemsData } from "../redux/slices/itemsSlice";
-
-import { itemsData } from "../assets/mockData/data";
-
-import { CatalogItem } from "../components/CatalogItem";
+import { fetchItemsData } from "../../redux/slices/itemsSlice";
 import { ScrollView } from "react-native-gesture-handler";
 
-const CatalogItemsScreen = ({ navigation }) => {
+import { Product } from "../../components/Catalog/Product";
+
+const ProductsScreen = ({ navigation }) => {
     const dispatch = useDispatch();
 
     React.useLayoutEffect(() => {
@@ -39,7 +37,7 @@ const CatalogItemsScreen = ({ navigation }) => {
             </Text>
             <View className="flex-row flex-wrap">
                 {/* items.map((item) => (
-                    <CatalogItem
+                    <Item
                         key={item.id}
                         {...item}
                         navigation={navigation}
@@ -50,4 +48,4 @@ const CatalogItemsScreen = ({ navigation }) => {
     );
 };
 
-export { CatalogItemsScreen };
+export { ProductsScreen };

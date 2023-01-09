@@ -4,8 +4,8 @@ import React from "react";
 import {
     incrementCount,
     decrementCount,
-    removeItem,
-} from "../redux/slices/cartSlice";
+    removeProduct,
+} from "../../redux/slices/cartSlice";
 import { useSelector, useDispatch } from "react-redux";
 
 const CartItem = ({ id, price, title, img, count }) => {
@@ -40,7 +40,7 @@ const CartItem = ({ id, price, title, img, count }) => {
                         <View className="mx-8">
                             <Button
                                 title="Удалить"
-                                onPress={() => dispatch(removeItem(id))}
+                                onPress={() => dispatch(removeProduct(id))}
                             ></Button>
                         </View>
                     </View>

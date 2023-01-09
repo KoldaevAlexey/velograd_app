@@ -3,8 +3,8 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 import { CatalogScreen } from "./CatalogScreen";
 import { CatalogItemsScreen } from "./CatalogItemsScreen";
-import { FullItemScreen } from "./FullItemScreen";
-import { CartScreen } from "./CartScreen";
+import { FullProductScreen } from "./FullProductScreen";
+import { TypesProductScreen } from "./TypesProductScreen";
 
 const CatalogStackScreen = () => {
     const CatalogStack = createNativeStackNavigator();
@@ -15,8 +15,14 @@ const CatalogStackScreen = () => {
                 name="Category"
                 component={CatalogItemsScreen}
             />
-            <CatalogStack.Screen name="FullItem" component={FullItemScreen} />
-            <CatalogStack.Screen name="Cart" component={CartScreen} />
+            <CatalogStack.Screen
+                name="TypesProduct"
+                component={TypesProductScreen}
+            />
+            <CatalogStack.Screen
+                name="FullProduct"
+                component={FullProductScreen}
+            />
         </CatalogStack.Navigator>
     );
 };

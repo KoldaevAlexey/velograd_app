@@ -3,7 +3,7 @@ import React, { useLayoutEffect } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Ionicons from "@expo/vector-icons/Ionicons";
 
-import { Catalog } from "../components/Catalog";
+import { Catalog } from "../../components/Catalog/Catalog";
 
 const CatalogScreen = ({ navigation }) => {
     React.useLayoutEffect(() => {
