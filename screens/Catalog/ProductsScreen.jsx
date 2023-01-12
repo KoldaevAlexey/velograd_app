@@ -2,7 +2,7 @@ import { View, Text } from "react-native";
 import React from "react";
 import { useRoute } from "@react-navigation/native";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchItemsData } from "../../redux/slices/itemsSlice";
+import { fetchProductsData } from "../../redux/slices/productsSlice";
 import { ScrollView } from "react-native-gesture-handler";
 
 import { Product } from "../../components/Catalog/Product";
@@ -18,7 +18,7 @@ const ProductsScreen = ({ navigation }) => {
 
     React.useEffect(() => {
         try {
-            dispatch(fetchItemsData());
+            dispatch(fetchProductsData());
         } catch (e) {
             console.log(e.message);
         }
@@ -26,7 +26,7 @@ const ProductsScreen = ({ navigation }) => {
 
     const route = useRoute();
 
-    const items = useSelector((state) => state.items.items);
+    //const items = useSelector((state) => state.items.items);
     //console.log(route.params);
 
     //items = items.filter((item) => item.attributes.type === route.params.attributes.type);

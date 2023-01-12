@@ -1,10 +1,10 @@
 import { View, Text, ScrollView } from "react-native";
 import React from "react";
 
-import { CategoryItem } from "./CatalogItem";
+import { CategoryItem } from "./CategoryItem";
 import axios from "axios";
 
-const Catalog = ({ navigation }) => {
+const Categories = ({ navigation }) => {
     const [categories, setCategories] = React.useState(null);
 
     React.useEffect(() => {
@@ -24,7 +24,7 @@ const Catalog = ({ navigation }) => {
     return (
         <ScrollView showsVerticalScrollIndicator={false}>
             {categories?.map((item) => (
-                <CatalogItem
+                <CategoryItem
                     key={item.attributes.id}
                     title={item.attributes.title}
                     imageUrl={item.attributes.imageUrl}
@@ -35,4 +35,4 @@ const Catalog = ({ navigation }) => {
     );
 };
 
-export { Catalog };
+export { Categories };

@@ -1,15 +1,19 @@
 import { View, Text, Image, TouchableOpacity } from "react-native";
 import React from "react";
 
-const CatalogItem = ({ id, title, imageUrl, navigation }) => {
+/* ("TypesProductScreen", {
+                    screen: "TypesProduct",
+                    params: title,
+                    id,
+                }) */
+
+const CategoryItem = ({ id, title, imageUrl, navigation }) => {
     return (
         <TouchableOpacity
             className="mt-5 flex-row bg-slate-800 p-3 rounded-xl"
             onPress={() =>
-                navigation.navigate("Category", {
-                    screen: "FullItem",
-                    params: title,
-                    id,
+                navigation.navigate("TypesProduct", {
+                    title,
                 })
             }
         >
@@ -26,4 +30,4 @@ const CatalogItem = ({ id, title, imageUrl, navigation }) => {
     );
 };
 
-export { CatalogItem };
+export { CategoryItem };

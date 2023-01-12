@@ -1,10 +1,10 @@
 import { View, Text } from "react-native";
 import React from "react";
 
-const TypesProductItem = () => {
+const TypesProductItem = ({ navigation, title }) => {
     return (
         <View>
-            <Text>TypesProductItem</Text>
+            <Text>{title}</Text>
         </View>
     );
 };

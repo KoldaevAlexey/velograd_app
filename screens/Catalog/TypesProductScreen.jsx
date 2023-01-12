@@ -1,14 +1,14 @@
-import { View, Text } from "react-native";
+import { View, Text, SafeAreaView } from "react-native";
 import React from "react";
 
 import { TypesProduct } from "../../components/Catalog/TypesProduct";
 
 const TypesProductScreen = () => {
     return (
-        <View>
-            <Text>TypesScreen</Text>
+        <SafeAreaView>
+            <Text>TypesProductScreen</Text>
             <TypesProduct />
-        </View>
+        </SafeAreaView>
     );
 };
 
