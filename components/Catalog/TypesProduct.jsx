@@ -4,7 +4,7 @@ import axios from "axios";
 
 import { TypesProductItem } from "./TypesProductItem";
 
-const TypesProduct = () => {
+const TypesProduct = ({ navigation }) => {
     const [typesProduct, setTypesProduct] = React.useState(null);
 
     React.useEffect(() => {
@@ -28,6 +28,7 @@ const TypesProduct = () => {
                     key={item.id}
                     title={item.attributes.title}
                     imageUrl={item.attributes.imageUrl}
+                    navigation={navigation}
                 />
             ))}
         </View>

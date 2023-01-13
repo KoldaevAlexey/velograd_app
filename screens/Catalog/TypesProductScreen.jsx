@@ -3,7 +3,9 @@ import React from "react";
 
 import { TypesProduct } from "../../components/Catalog/TypesProduct";
 
-const TypesProductScreen = () => {
+const TypesProductScreen = ({navigation}) => {
+
+    console.log()
     return (
         <SafeAreaView>
             <Text>TypesProductScreen</Text>
