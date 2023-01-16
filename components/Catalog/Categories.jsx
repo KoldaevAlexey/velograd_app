@@ -2,22 +2,19 @@ import { View, Text, ScrollView } from "react-native";
 import React from "react";
 
 import { CategoryItem } from "./CategoryItem";
-import axios from "axios";
+
+import { useSelector, useDispatch } from "react-redux";
+import { fetchCategoriesData } from "../../redux/slices/categoriesSlice";
 
 const Categories = ({ navigation }) => {
-    const [categories, setCategories] = React.useState(null);
+    const categories = useSelector((state) => state.categories.categories);
+    const dispatch = useDispatch();
 
     React.useEffect(() => {
         try {
-            const fetchCategoriesData = async () => {
-                const { data } = await axios.get(
-                    "http://10.0.2.2:1337/api/categories"
-                );
-                setCategories(data.data);
-            };
-            fetchCategoriesData();
+            dispatch(fetchCategoriesData());
         } catch (e) {
-            console.log(e.response.data);
+            console.log(e.message);
         }
     }, []);
 
@@ -25,9 +22,10 @@ const Categories = ({ navigation }) => {
         <ScrollView showsVerticalScrollIndicator={false}>
             {categories?.map((item) => (
                 <CategoryItem
-                    key={item.attributes.id}
-                    title={item.attributes.title}
-                    imageUrl={item.attributes.imageUrl}
+                    key={item.category.id}
+                    title={item.category.title}
+                    imageUrl={item.category.imageUrl}
+                    typesProduct={item.types}
                     navigation={navigation}
                 />
             ))}

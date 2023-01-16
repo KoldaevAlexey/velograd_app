@@ -7,13 +7,14 @@ import React from "react";
                     id,
                 }) */
 
-const CategoryItem = ({ id, title, imageUrl, navigation }) => {
+const CategoryItem = ({ id, title, imageUrl, navigation, typesProduct }) => {
     return (
         <TouchableOpacity
             className="mt-5 flex-row bg-slate-800 p-3 rounded-xl"
             onPress={() =>
                 navigation.navigate("TypesProduct", {
                     title,
+                    typesProduct,
                 })
             }
         >

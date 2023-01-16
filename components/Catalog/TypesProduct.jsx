@@ -1,33 +1,29 @@
 import { View, Text } from "react-native";
 import React from "react";
 import axios from "axios";
+import { useRoute } from "@react-navigation/native";
 
 import { TypesProductItem } from "./TypesProductItem";
 
 const TypesProduct = ({ navigation }) => {
     const [typesProduct, setTypesProduct] = React.useState(null);
+    const route = useRoute();
 
     React.useEffect(() => {
         try {
-            const fetchTypesProductData = async () => {
-                const { data } = await axios.get(
-                    "http://10.0.2.2:1337/api/types-products"
-                );
-                setTypesProduct(data.data);
-            };
-            fetchTypesProductData();
+            setTypesProduct(route.params.typesProduct);
         } catch (e) {
-            console.log(e.response.data);
+            console.log(e.message);
         }
     }, []);
 
     return (
         <View>
-            {typesProduct?.map((item) => (
+            {typesProduct?.map((item, idx) => (
                 <TypesProductItem
-                    key={item.id}
-                    title={item.attributes.title}
-                    imageUrl={item.attributes.imageUrl}
+                    key={idx}
+                    title={item.title}
+                    imageUrl={item.imageUrl}
                     navigation={navigation}
                 />
             ))}

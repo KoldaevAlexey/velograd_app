@@ -16,6 +16,7 @@ const Cart = () => {
     const cartItems = useSelector((state) => state.cart.cartItems);
     const dispatch = useDispatch();
 
+    //перенести в редакс
     const totalCount = cartItems.reduce((acc, item) => {
         return acc + item.count;
     }, 0);
