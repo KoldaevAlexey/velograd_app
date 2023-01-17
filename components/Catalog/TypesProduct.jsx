@@ -1,6 +1,5 @@
-import { View, Text } from "react-native";
+import { View, Text, ScrollView } from "react-native";
 import React from "react";
-import axios from "axios";
 import { useRoute } from "@react-navigation/native";
 
 import { TypesProductItem } from "./TypesProductItem";
@@ -18,7 +17,7 @@ const TypesProduct = ({ navigation }) => {
     }, []);
 
     return (
-        <View>
+        <ScrollView>
             {typesProduct?.map((item, idx) => (
                 <TypesProductItem
                     key={idx}
@@ -27,7 +26,7 @@ const TypesProduct = ({ navigation }) => {
                     navigation={navigation}
                 />
             ))}
-        </View>
+        </ScrollView>
     );
 };
 

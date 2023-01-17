@@ -3,13 +3,11 @@ import React from "react";
 
 import { TypesProduct } from "../../components/Catalog/TypesProduct";
 
-const TypesProductScreen = ({navigation}) => {
-
-    console.log()
+const TypesProductScreen = ({ navigation }) => {
     return (
         <SafeAreaView>
             <Text>TypesProductScreen</Text>
-            <TypesProduct />
+            <TypesProduct navigation={navigation} />
         </SafeAreaView>
     );
 };
