@@ -7,44 +7,63 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { useSelector, useDispatch } from "react-redux";
 import { addProduct } from "../../redux/slices/cartSlice";
 
+import { fetchFullProductData } from "../../redux/slices/fullProductSlice";
+
 const FullProductScreen = ({ navigation }) => {
-    const [modalVisible, setModalVisible] = React.useState(false);
+    const route = useRoute();
+
+    //const [modalVisible, setModalVisible] = React.useState(false);
 
     const cartItems = useSelector((state) => state.cart.cartItems);
     const dispatch = useDispatch();
 
-    React.useLayoutEffect(() => {
+    /* React.useLayoutEffect(() => {
         navigation.setOptions({
             headerShown: false,
         });
+    }, []); */
+
+    React.useEffect(() => {
+        try {
+            dispatch(fetchFullProductData(route.params.id));
+        } catch (e) {
+            console.log(e.message);
+        }
     }, []);
-    const route = useRoute();
+
+    const fullProduct = useSelector((state) => state.fullProduct.fullProduct);
+    console.log(route.params);
 
     return (
-        <SafeAreaView className="bg-slate-900 h-full p-2">
-            <ScrollView className="h-full">
+        <ScrollView className="bg-slate-900 p-4 h-full">
+            <View className="w-full h-60 p-5">
                 <Image
                     source={{
-                        uri: route.params.img,
+                        uri: fullProduct?.attributes.imageUrl,
                     }}
                     className="w-full h-full rounded-2xl my-5"
                 />
-                <View className="items-center my-5">
-                    <Text className="my-2 text-gray-100 font-bold text-xl">
-                        {route.params.title}
-                    </Text>
+            </View>
+            <View className="items-center my-5">
+                <Text className="my-2 text-gray-100 font-bold text-xl">
+                    {fullProduct?.attributes.title}
+                </Text>
+                {
                     <Text className="my-2 text-gray-400 font-bold text-l">
-                        {route.params.description}
+                        {fullProduct?.attributes.description}
                     </Text>
+                }
+                {
                     <Text className="my-2 text-gray-400 font-bold text-l">
-                        {route.params.price} руб.
+                        {fullProduct?.attributes.price} руб.
                     </Text>
-                </View>
-                <Button
-                    title="В корзину"
-                    onPress={() => dispatch(addProduct(route.params))}
-                ></Button>
-                <View>
+                }
+            </View>
+            <Button
+                title="В корзину"
+                onPress={() => dispatch(addProduct(route.params))}
+            ></Button>
+            {/*  <View>
                     <Modal
                         animationType="fade"
                         transparent={true}
@@ -72,9 +91,8 @@ const FullProductScreen = ({ navigation }) => {
                             </View>
                         </View>
                     </Modal>
-                </View>
-            </ScrollView>
-        </SafeAreaView>
+                </View> */}
+        </ScrollView>
     );
 };
 

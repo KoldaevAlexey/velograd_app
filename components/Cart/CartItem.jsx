@@ -1,4 +1,4 @@
-import { View, Text, Image, Button } from "react-native";
+import { View, Text, Image, Button, ScrollView } from "react-native";
 import React from "react";
 
 import {
@@ -8,18 +8,20 @@ import {
 } from "../../redux/slices/cartSlice";
 import { useSelector, useDispatch } from "react-redux";
 
-const CartItem = ({ id, price, title, img, count }) => {
+const CartItem = ({ id, price, title, imageUrl, count }) => {
     const dispatch = useDispatch();
 
     return (
-        <View>
-            <View className="flex-row mx-1">
-                <Image
-                    source={{
-                        uri: img,
-                    }}
-                    className="w-24 h-24 rounded-2xl my-5"
-                />
+        <ScrollView>
+            <View className="flex-row">
+                <View className="w-48 h-32 my-5 mr-2">
+                    <Image
+                        source={{
+                            uri: imageUrl,
+                        }}
+                        className="w-full h-full rounded-2xl"
+                    />
+                </View>
                 <View className="my-5">
                     <Text className="my-2 mx-1 text-gray-100 font-bold text-l flex-wrap">
                         {title}
@@ -46,7 +48,7 @@ const CartItem = ({ id, price, title, img, count }) => {
                     </View>
                 </View>
             </View>
-        </View>
+        </ScrollView>
     );
 };
 

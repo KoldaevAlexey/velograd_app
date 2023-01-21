@@ -12,33 +12,36 @@ const ProductsScreen = ({ navigation }) => {
     const dispatch = useDispatch();
     const route = useRoute();
 
-    React.useLayoutEffect(() => {
-        navigation.setOptions({
-            headerShown: false,
-        });
-    }, []);
-
     React.useEffect(() => {
         try {
-            console.log(route.params.title);
+            dispatch(fetchProductsData());
         } catch (e) {
             console.log(e.message);
         }
     }, []);
 
+    const products = useSelector((state) => state.products.products);
+
+    const filteredProducts = products?.filter(
+        (item) => item.attributes.type === route.params.title
+    );
+
     return (
         <ScrollView className="bg-slate-900 h-full">
             <Text className="my-5 text-center font-bold text-xl text-white">
-                {/* route.params.title */}
+                {route.params.title}
             </Text>
             <View className="flex-row flex-wrap">
-                {/* items.map((item) => (
+                {filteredProducts?.map((item) => (
                     <Product
                         key={item.id}
-                        {...item}
+                        id={item.id}
+                        title={item.attributes.title}
+                        imageUrl={item.attributes.imageUrl}
+                        price={item.attributes.price}
                         navigation={navigation}
                     />
-                )) */}
+                ))}
             </View>
         </ScrollView>
     );

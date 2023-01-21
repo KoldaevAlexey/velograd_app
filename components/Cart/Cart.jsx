@@ -16,7 +16,6 @@ const Cart = () => {
     const cartItems = useSelector((state) => state.cart.cartItems);
     const dispatch = useDispatch();
 
-    //перенести в редакс
     const totalCount = cartItems.reduce((acc, item) => {
         return acc + item.count;
     }, 0);
@@ -27,7 +26,7 @@ const Cart = () => {
 
     return (
         <SafeAreaView className="bg-slate-900 h-full">
-            <ScrollView className="p-2">
+            <ScrollView className="p-2 mt-10">
                 {cartItems.length === 0 ? (
                     <Text className="text-white text-center text-2xl my-64">
                         Корзина пустая, добавьте товар
