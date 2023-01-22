@@ -31,14 +31,15 @@ const CartItem = ({ id, price, title, imageUrl, count }) => {
                     </Text>
                     <View className="flex-row items-center">
                         <Button
-                            title="+"
-                            onPress={() => dispatch(incrementCount(id))}
-                        ></Button>
-                        <Text className="text-white mx-2">{count}</Text>
-                        <Button
                             title="-"
                             onPress={() => dispatch(decrementCount(id))}
                         ></Button>
+                        <Text className="text-white mx-2">{count}</Text>
+                        <Button
+                            title="+"
+                            onPress={() => dispatch(incrementCount(id))}
+                        ></Button>
+
                         <View className="mx-8">
                             <Button
                                 title="Удалить"

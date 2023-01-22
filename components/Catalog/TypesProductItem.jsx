@@ -7,20 +7,20 @@ const TypesProductItem = ({ navigation, title, imageUrl }) => {
 
     return (
         <TouchableOpacity
-            className="mt-5 flex-row bg-slate-800 p-3 rounded-xl"
+            className="mt-2 flex-row bg-slate-800 p-2 rounded-xl h-16"
             onPress={() =>
                 navigation.navigate("Products", {
                     title,
                 })
             }
         >
-            <Image
+            {/* <Image
                 source={{
                     uri: imageUrl,
                 }}
                 className="w-28 h-28 rounded-2xl"
-            />
-            <Text className="ml-5 text-gray-100 font-bold text-xl">
+            /> */}
+            <Text className="ml-2 text-gray-100 font-bold text-xl">
                 {title}
             </Text>
         </TouchableOpacity>

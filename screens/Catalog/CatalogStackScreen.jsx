@@ -8,8 +8,20 @@ import { TypesProductScreen } from "./TypesProductScreen";
 
 const CatalogStackScreen = () => {
     const CatalogStack = createNativeStackNavigator();
+
     return (
-        <CatalogStack.Navigator>
+        <CatalogStack.Navigator
+            screenOptions={{
+                title: "Назад",
+                headerStyle: {
+                    backgroundColor: "#1E293B",
+                },
+                headerTintColor: "#fff",
+                headerTitleStyle: {
+                    fontWeight: "bold",
+                },
+            }}
+        >
             <CatalogStack.Screen name="Catalog" component={CatalogScreen} />
             <CatalogStack.Screen name="Products" component={ProductsScreen} />
             <CatalogStack.Screen

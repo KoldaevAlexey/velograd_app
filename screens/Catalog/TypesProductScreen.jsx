@@ -5,8 +5,7 @@ import { TypesProduct } from "../../components/Catalog/TypesProduct";
 
 const TypesProductScreen = ({ navigation }) => {
     return (
-        <SafeAreaView>
-            <Text>TypesProductScreen</Text>
+        <SafeAreaView className={"bg-slate-900 h-full"}>
             <TypesProduct navigation={navigation} />
         </SafeAreaView>
     );

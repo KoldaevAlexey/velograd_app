@@ -17,12 +17,6 @@ const FullProductScreen = ({ navigation }) => {
     const cartItems = useSelector((state) => state.cart.cartItems);
     const dispatch = useDispatch();
 
-    /* React.useLayoutEffect(() => {
-        navigation.setOptions({
-            headerShown: false,
-        });
-    }, []); */
-
     React.useEffect(() => {
         try {
             dispatch(fetchFullProductData(route.params.id));
@@ -32,7 +26,6 @@ const FullProductScreen = ({ navigation }) => {
     }, []);
 
     const fullProduct = useSelector((state) => state.fullProduct.fullProduct);
-    console.log(route.params);
 
     return (
         <ScrollView className="bg-slate-900 p-4 h-full">
