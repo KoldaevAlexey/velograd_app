@@ -12,7 +12,7 @@ import { AnimatedImage } from "react-native-ui-lib";
 const Product = ({ id, title, imageUrl, price, navigation }) => {
     return (
         <TouchableOpacity
-            className="w-44 h-64 mx-2 flex-col items-center bg-slate-800 rounded-xl"
+            className="w-44 h-64 ml-5 flex-col items-center bg-slate-800 rounded-xl"
             onPress={() =>
                 navigation.navigate("FullProduct", {
                     title,

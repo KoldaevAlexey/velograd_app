@@ -11,18 +11,11 @@ import { clearProducts } from "../../redux/slices/cartSlice";
 import React from "react";
 
 import { CartItem } from "./CartItem";
+import { totalCount, totalPrice } from "../../utils/cartCalculate";
 
 const Cart = () => {
     const cartItems = useSelector((state) => state.cart.cartItems);
     const dispatch = useDispatch();
-
-    const totalCount = cartItems.reduce((acc, item) => {
-        return acc + item.count;
-    }, 0);
-
-    const totalPrice = cartItems.reduce((acc, item) => {
-        return acc + item.price * item.count;
-    }, 0);
 
     return (
         <SafeAreaView className="bg-slate-900 h-full">
@@ -46,10 +39,10 @@ const Cart = () => {
                         </View>
                         <View className="my-20 p-5">
                             <Text className="text-white text-lg">
-                                Общая сумма: {totalPrice} руб.
+                                Общая сумма: {totalPrice(cartItems)} руб.
                             </Text>
                             <Text className="text-white text-lg">
-                                Количество товаров: {totalCount} шт.
+                                Количество товаров: {totalCount(cartItems)} шт.
                             </Text>
                         </View>
                     </>
