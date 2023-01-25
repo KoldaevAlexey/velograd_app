@@ -1,12 +1,6 @@
 import { View, Text, Image, TouchableOpacity } from "react-native";
 import React from "react";
 
-/* ("TypesProductScreen", {
-                    screen: "TypesProduct",
-                    params: title,
-                    id,
-                }) */
-
 const CategoryItem = ({ id, title, imageUrl, navigation, typesProduct }) => {
     return (
         <TouchableOpacity

@@ -4,7 +4,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Ionicons from "@expo/vector-icons/Ionicons";
 
-import { HomeScreen } from "./screens/HomeScreen";
+import { HomeStackScreen } from "./screens/Home/HomeStackScreen";
 import { AboutScreen } from "./screens/AboutScreen";
 import { CatalogStackScreen } from "./screens/Catalog/CatalogStackScreen";
 import { CartScreen } from "./screens/CartScreen";
@@ -49,7 +49,7 @@ export default function App() {
                         headerShown: false,
                     })}
                 >
-                    <Tab.Screen name="Главная" component={HomeScreen} />
+                    <Tab.Screen name="Главная" component={HomeStackScreen} />
                     <Tab.Screen name="Каталог" component={CatalogStackScreen} />
                     <Tab.Screen name="Корзина" component={CartScreen} />
                     <Tab.Screen name="Еще" component={AboutScreen} />

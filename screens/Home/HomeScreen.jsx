@@ -4,21 +4,43 @@ import { SafeAreaView } from "react-native-safe-area-context";
 
 import { Carousel } from "react-native-ui-lib";
 
-import { carouselImages } from "../assets/mockData/data";
-import { Blogs } from "../components/Blogs";
+import { carouselImages } from "../../assets/mockData/data";
+import { BlogSection } from "../../components/Blog/BlogSection";
+
+import { useRoute } from "@react-navigation/native";
+import { useDispatch, useSelector } from "react-redux";
+
+import { fetchBlogsData } from "../../redux/slices/BlogsSlice";
+
+import axios from "axios";
 
 const HomeScreen = ({ navigation }) => {
+    const dispatch = useDispatch();
+    const route = useRoute();
+
+    const blogsData = useSelector((state) => state.blogs.blogs);
+
     React.useLayoutEffect(() => {
         navigation.setOptions({
             headerShown: false,
         });
     }, []);
 
+    React.useEffect(() => {
+        try {
+            dispatch(fetchBlogsData);
+        } catch (e) {
+            console.log(e.message);
+        }
+    }, []);
+
+    console.log(blogsData);
+
     return (
         <SafeAreaView className="bg-slate-900 h-full p-1">
             <ScrollView showsVerticalScrollIndicator={false} className="h-full">
                 <View>
-                    <Text className="my-5 text-xl font-bold text-center text-white">
+                    <Text className="my-5 text-2xl font-bold text-center text-white">
                         Акции
                     </Text>
                     <Carousel
@@ -39,7 +61,7 @@ const HomeScreen = ({ navigation }) => {
                         ))}
                     </Carousel>
                 </View>
-                <Blogs />
+                <BlogSection navigation={navigation} />
             </ScrollView>
         </SafeAreaView>
     );

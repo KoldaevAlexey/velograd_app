@@ -32,7 +32,6 @@ const Product = ({ id, title, imageUrl, price, navigation }) => {
                     className="w-full h-full rounded-2xl"
                 />
             </View>
-
             <Text className="my-2 text-gray-100 font-bold text-l">{title}</Text>
             <Text className="my-2 text-gray-400 font-bold text-l">
                 {price} руб.

@@ -15,24 +15,17 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { useSelector, useDispatch } from "react-redux";
 import { addProduct } from "../../redux/slices/cartSlice";
 
-import {
-    Dialog,
-    PanningProvider,
-    Colors,
-    Constants,
-} from "react-native-ui-lib";
+import { Toast } from "react-native-ui-lib";
 
 import { fetchFullProductData } from "../../redux/slices/fullProductSlice";
 
 const FullProductScreen = () => {
-    //const [isVisible, setIsVisible] = React.useState(false);
-    const [styleAddButton, setStyleAddButton] = React.useState({
+    const [isVisible, setIsVisible] = React.useState(false);
+    /* const [styleAddButton, setStyleAddButton] = React.useState({
         color: "bg-orange-500",
         text: "добавить",
-    });
+    }); */
     const route = useRoute();
-
-    //const [modalVisible, setModalVisible] = React.useState(false);
 
     const dispatch = useDispatch();
 
@@ -49,42 +42,15 @@ const FullProductScreen = () => {
 
     const handlerAddProduct = () => {
         dispatch(addProduct(route.params));
-        setStyleAddButton({
+        /* setStyleAddButton({
             color: "bg-lime-900",
             text: "добавлен в корзину",
-        });
-    };
-
-    /* const showDialog = () => {
+        }); */
         setIsVisible(true);
     };
 
-    const closeDialog = () => {
-        setIsVisible(false);
-    }; */
-
     return (
         <ScrollView className="bg-slate-900 p-4 h-full">
-            {/* <Dialog
-                visible={isVisible}
-                onDismiss={() => console.log("dismissed")}
-                panDirection={PanningProvider.Directions.LEFT}
-                overlayBackgroundColor={"grey"}
-                containerStyle={styles.dialog}
-            >
-                <View className="flex-col my-10 items-center">
-                    <Text className="text-center font-bold text-2xl">
-                        {fullProduct?.attributes.title} добавлен в корзину
-                    </Text>
-                    <View className="mt-5 w-1/2">
-                        <Button
-                            title="OK"
-                            onPress={() => closeDialog()}
-                        ></Button>
-                    </View>
-                </View>
-            </Dialog> */}
-
             <View className="w-full h-60 p-5">
                 <Image
                     source={{
@@ -110,53 +76,24 @@ const FullProductScreen = () => {
             </View>
             <View className="items-center">
                 <Pressable
-                    className={`${styleAddButton.color} rounded-lg w-1/2 items-center`}
+                    className={`bg-pink-900 rounded-lg w-1/2 items-center`}
                     onPress={() => handlerAddProduct()}
                 >
                     <Text className="text-bold text-white text-lg">
-                        {styleAddButton.text}
+                        Добавить в корзину
                     </Text>
                 </Pressable>
             </View>
-            {/*  <View>
-                    <Modal
-                        animationType="fade"
-                        transparent={true}
-                        visible={modalVisible}
-                        onRequestClose={() => {
-                            Alert.alert("Modal has been closed.");
-                            setModalVisible(!modalVisible);
-                        }}
-                    >
-                        <View className="bg-slate-600 items-center justify-center flex-1">
-                            <View>
-                                <Text className="text-white font-bold text-xl mx-10">
-                                    Товар {route.params.title} добавлен в
-                                    корзину!
-                                </Text>
-                                <Pressable
-                                    onPress={() =>
-                                        setModalVisible(!modalVisible)
-                                    }
-                                >
-                                    <Text className="text-white my-10 text-l text-center">
-                                        ОКЕЙ!
-                                    </Text>
-                                </Pressable>
-                            </View>
-                        </View>
-                    </Modal>
-                </View> */}
+            <Toast
+                visible={isVisible}
+                position={"bottom"}
+                autoDismiss={1000}
+                onDismiss={() => setIsVisible(false)}
+                message={"Товар добавлен в корзину"}
+                backgroundColor={"#545CFC"}
+            ></Toast>
         </ScrollView>
     );
 };
 
 export { FullProductScreen };
-
-const styles = StyleSheet.create({
-    dialog: {
-        backgroundColor: "white",
-        borderRadius: 12,
-        height: 200,
-    },
-});
