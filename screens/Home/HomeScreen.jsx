@@ -10,15 +10,12 @@ import { BlogSection } from "../../components/Blog/BlogSection";
 import { useRoute } from "@react-navigation/native";
 import { useDispatch, useSelector } from "react-redux";
 
-import { fetchBlogsData } from "../../redux/slices/BlogsSlice";
+import { fetchBlogsData } from "../../redux/slices/blogsSlice";
 
 import axios from "axios";
 
 const HomeScreen = ({ navigation }) => {
     const dispatch = useDispatch();
-    const route = useRoute();
-
-    const blogsData = useSelector((state) => state.blogs.blogs);
 
     React.useLayoutEffect(() => {
         navigation.setOptions({
@@ -28,13 +25,11 @@ const HomeScreen = ({ navigation }) => {
 
     React.useEffect(() => {
         try {
-            dispatch(fetchBlogsData);
+            dispatch(fetchBlogsData());
         } catch (e) {
             console.log(e.message);
         }
     }, []);
-
-    console.log(blogsData);
 
     return (
         <SafeAreaView className="bg-slate-900 h-full p-1">

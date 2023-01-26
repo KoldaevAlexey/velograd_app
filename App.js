@@ -5,7 +5,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Ionicons from "@expo/vector-icons/Ionicons";
 
 import { HomeStackScreen } from "./screens/Home/HomeStackScreen";
-import { AboutScreen } from "./screens/AboutScreen";
+import { DetailsScreen } from "./screens/Details/DetailScreen";
 import { CatalogStackScreen } from "./screens/Catalog/CatalogStackScreen";
 import { CartScreen } from "./screens/CartScreen";
 
@@ -26,7 +26,7 @@ export default function App() {
                                 iconName = focused
                                     ? "information-circle"
                                     : "information-circle-outline";
-                            } else if (route.name === "Еще") {
+                            } else if (route.name === "Дополнительно") {
                                 iconName = focused ? "list" : "list-outline";
                             } else if (route.name === "Каталог") {
                                 iconName = focused
@@ -52,7 +52,10 @@ export default function App() {
                     <Tab.Screen name="Главная" component={HomeStackScreen} />
                     <Tab.Screen name="Каталог" component={CatalogStackScreen} />
                     <Tab.Screen name="Корзина" component={CartScreen} />
-                    <Tab.Screen name="Еще" component={AboutScreen} />
+                    <Tab.Screen
+                        name="Дополнительно"
+                        component={DetailsScreen}
+                    />
                 </Tab.Navigator>
             </NavigationContainer>
         </Provider>
