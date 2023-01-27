@@ -12,8 +12,6 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { fetchBlogsData } from "../../redux/slices/blogsSlice";
 
-import axios from "axios";
-
 const HomeScreen = ({ navigation }) => {
     const dispatch = useDispatch();
 

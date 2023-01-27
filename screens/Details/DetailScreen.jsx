@@ -3,55 +3,41 @@ import React, { useLayoutEffect } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useNavigation } from "@react-navigation/native";
 
-import { Dash } from "react-native-ui-lib";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchDetailsData } from "../../redux/slices/detailsSlice";
 
-const DetailsScreen = () => {
-    const navigation = useNavigation();
+import { DetailsScreenItem } from "../../components/Details/DetailsScreenItem";
+
+const DetailsScreen = ({ navigation }) => {
+    //const navigation = useNavigation();
+    const dispatch = useDispatch();
 
     useLayoutEffect(() => {
         navigation.setOptions({
-            headerShown: true,
-            headerStyle: {
-                backgroundColor: "#1E293B",
-            },
-            headerTintColor: "#fff",
-            headerTitleStyle: {
-                fontWeight: "bold",
-            },
+            headerShown: false,
         });
     }, []);
 
+    React.useEffect(() => {
+        try {
+            dispatch(fetchDetailsData());
+        } catch (e) {
+            console.log(e.message);
+        }
+    }, []);
+
+    const detailsData = useSelector((state) => state.details.details);
+
     return (
-        <SafeAreaView className="bg-slate-900 h-full">
+        <SafeAreaView className="bg-slate-900 h-full p-3">
             <ScrollView>
-                <TouchableOpacity className="my-2">
-                    <Text className="text-white text-lg">Адреса магазинов</Text>
-                    <Dash horizontal color={"white"} length={400} />
-                </TouchableOpacity>
-                <TouchableOpacity className="my-2">
-                    <Text className="text-white text-lg">
-                        Как выбрать велосипед
-                    </Text>
-                    <Dash horizontal color={"white"} length={400} />
-                </TouchableOpacity>
-                <TouchableOpacity className="my-2">
-                    <Text className="text-white text-lg">Гарантия</Text>
-                    <Dash horizontal color={"white"} length={400} />
-                </TouchableOpacity>
-                <TouchableOpacity className="my-2">
-                    <Text className="text-white text-lg">Возврат</Text>
-                    <Dash horizontal color={"white"} length={400} />
-                </TouchableOpacity>
-                <TouchableOpacity className="my-2">
-                    <Text className="text-white text-lg">
-                        Сезонное хранение
-                    </Text>
-                    <Dash horizontal color={"white"} length={400} />
-                </TouchableOpacity>
-                <TouchableOpacity className="my-2">
-                    <Text className="text-white text-lg">Трейд-ин</Text>
-                    <Dash horizontal color={"white"} length={400} />
-                </TouchableOpacity>
+                {detailsData?.map((item) => (
+                    <DetailsScreenItem
+                        key={item.id}
+                        navigation={navigation}
+                        title={item.attributes.title}
+                    />
+                ))}
             </ScrollView>
         </SafeAreaView>
     );

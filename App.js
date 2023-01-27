@@ -5,7 +5,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Ionicons from "@expo/vector-icons/Ionicons";
 
 import { HomeStackScreen } from "./screens/Home/HomeStackScreen";
-import { DetailsScreen } from "./screens/Details/DetailScreen";
+import { DetailsStackScreen } from "./screens/Details/DetailsStackScreen";
 import { CatalogStackScreen } from "./screens/Catalog/CatalogStackScreen";
 import { CartScreen } from "./screens/CartScreen";
 
@@ -54,7 +54,7 @@ export default function App() {
                     <Tab.Screen name="Корзина" component={CartScreen} />
                     <Tab.Screen
                         name="Дополнительно"
-                        component={DetailsScreen}
+                        component={DetailsStackScreen}
                     />
                 </Tab.Navigator>
             </NavigationContainer>
