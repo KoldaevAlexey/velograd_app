@@ -2,7 +2,8 @@ import * as React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 import { DetailsScreen } from "./DetailScreen";
-import { FullDetailsScreen } from "./FullDetailsScreen";
+import { BikeSelectionScreen } from "./BikeSelectionScreen";
+import { FullBikeSelectionScreen } from "./FullBikeSelectionScreen";
 
 const DetailsStackScreen = () => {
     const DetailsStack = createNativeStackNavigator();
@@ -22,8 +23,12 @@ const DetailsStackScreen = () => {
         >
             <DetailsStack.Screen name="Details" component={DetailsScreen} />
             <DetailsStack.Screen
-                name="FullDetails"
-                component={FullDetailsScreen}
+                name="Как выбрать велосипед"
+                component={BikeSelectionScreen}
+            />
+            <DetailsStack.Screen
+                name="FullBikeSelectionScreen"
+                component={FullBikeSelectionScreen}
             />
         </DetailsStack.Navigator>
     );

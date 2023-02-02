@@ -5,6 +5,7 @@ import categories from "./slices/categoriesSlice";
 import fullProduct from "./slices/fullProductSlice";
 import blogs from "./slices/blogsSlice";
 import details from "./slices/detailsSlice";
+import bikeSelection from "./slices/bikeSelectionSlice";
 
 export const store = configureStore({
     reducer: {
@@ -14,5 +15,6 @@ export const store = configureStore({
         fullProduct,
         blogs,
         details,
+        bikeSelection,
     },
 });

@@ -3,3 +3,4 @@ export const BLOGS_ROUTE = "blogs";
 export const PRODUCTS_ROUTE = "items";
 export const CATEGORIES_ROUTE = "categories";
 export const DETAILS_ROUTE = "details";
+export const BIKE_SELECTION_ROUTE = "bikes-selection";
