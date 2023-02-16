@@ -1,9 +1,13 @@
 import * as React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
-import { DetailsScreen } from "./DetailScreen";
+import { DetailsScreen } from "./DetailsScreen";
 import { BikeSelectionScreen } from "./BikeSelectionScreen";
 import { FullBikeSelectionScreen } from "./FullBikeSelectionScreen";
+import { WarrantyScreen } from "./WarrantyScreen";
+import { StoreAddressesScreen } from "./StoreAddressesScreen";
+import { PurchaseReturnsScreen } from "./PurchaseReturnsScreen";
+import { SeasonalStorageScreen } from "./SeasonalStorageScreen";
 
 const DetailsStackScreen = () => {
     const DetailsStack = createNativeStackNavigator();
@@ -29,6 +33,19 @@ const DetailsStackScreen = () => {
             <DetailsStack.Screen
                 name="FullBikeSelectionScreen"
                 component={FullBikeSelectionScreen}
+            />
+            <DetailsStack.Screen name="Гарантия" component={WarrantyScreen} />
+            <DetailsStack.Screen
+                name="Адреса магазинов"
+                component={StoreAddressesScreen}
+            />
+            <DetailsStack.Screen
+                name="Возврат"
+                component={PurchaseReturnsScreen}
+            />
+            <DetailsStack.Screen
+                name="Сезонное хранение велосипедов"
+                component={SeasonalStorageScreen}
             />
         </DetailsStack.Navigator>
     );

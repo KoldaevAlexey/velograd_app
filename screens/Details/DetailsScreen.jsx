@@ -4,7 +4,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { useNavigation } from "@react-navigation/native";
 
 import { useDispatch, useSelector } from "react-redux";
-import { fetchDetailsData } from "../../redux/slices/detailsSlice";
+import { fetchDetailsListData } from "../../redux/slices/detailsSlice";
 
 import { DetailsScreenItem } from "../../components/Details/DetailsScreenItem";
 
@@ -20,13 +20,13 @@ const DetailsScreen = ({ navigation }) => {
 
     React.useEffect(() => {
         try {
-            dispatch(fetchDetailsData());
+            dispatch(fetchDetailsListData());
         } catch (e) {
             console.log(e.message);
         }
     }, []);
 
-    const detailsData = useSelector((state) => state.details.details);
+    const detailsData = useSelector((state) => state.details.detailsList);
 
     return (
         <SafeAreaView className="bg-slate-900 h-full p-3">
@@ -36,6 +36,7 @@ const DetailsScreen = ({ navigation }) => {
                         key={item.id}
                         navigation={navigation}
                         title={item.attributes.title}
+                        description={item.attributes.description}
                     />
                 ))}
             </ScrollView>

@@ -9,7 +9,7 @@ import { AnimatedImage } from "react-native-ui-lib";
 const FullBikeSelectionScreen = () => {
     const route = useRoute();
     const bikeSelectionData = useSelector(
-        (state) => state.bikeSelection.bikeSelection
+        (state) => state.details.bikeSelection
     );
 
     const { attributes } = bikeSelectionData.find((item) => {
