@@ -3,9 +3,11 @@ import axios from "axios";
 
 export const fetchProductsData = createAsyncThunk(
     "products/fetchProductsData",
-    async () => {
-        const { data } = await axios.get(`http://10.0.2.2:1337/api/items`);
-        return data.data;
+    async (title) => {
+        const { data } = await axios.get(
+            `http://10.0.2.2:1337/api/items?filters[type][$contains]=${title}&sort=price:asc`
+        );
+        return data;
     }
 );
 

@@ -12,19 +12,17 @@ const ProductsScreen = ({ navigation }) => {
     const dispatch = useDispatch();
     const route = useRoute();
 
+    const products = useSelector((state) => state.products.products);
+
     React.useEffect(() => {
         try {
-            dispatch(fetchProductsData());
+            dispatch(fetchProductsData(route.params.title));
         } catch (e) {
             console.log(e.message);
         }
     }, []);
 
-    const products = useSelector((state) => state.products.products);
-
-    const filteredProducts = products?.filter(
-        (item) => item.attributes.type === route.params.title
-    );
+    /* console.log(products.data); */
 
     return (
         <ScrollView className="bg-slate-900 h-full">
@@ -32,14 +30,12 @@ const ProductsScreen = ({ navigation }) => {
                 {route.params.title}
             </Text>
             <View className="flex-row flex-wrap">
-                {filteredProducts?.map((item) => (
+                {products?.data.map((item) => (
                     <Product
                         key={item.id}
-                        id={item.id}
-                        title={item.attributes.title}
-                        imageUrl={item.attributes.imageUrl}
-                        price={item.attributes.price}
                         navigation={navigation}
+                        id={item.id}
+                        attributes={item.attributes}
                     />
                 ))}
             </View>

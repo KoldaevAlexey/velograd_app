@@ -9,23 +9,21 @@ import React from "react";
 
 import { AnimatedImage } from "react-native-ui-lib";
 
-const Product = ({ id, title, imageUrl, price, navigation }) => {
+const Product = ({ navigation, id, attributes }) => {
+    const { title, imagesUrl, price } = attributes;
     return (
         <TouchableOpacity
             className="w-44 h-64 ml-5 flex-col items-center bg-slate-800 rounded-xl"
             onPress={() =>
                 navigation.navigate("FullProduct", {
-                    title,
-                    imageUrl,
-                    id,
-                    price,
+                    ...attributes,
                 })
             }
         >
             <View className="w-60 h-44 p-8 -mt-8">
                 <AnimatedImage
                     source={{
-                        uri: imageUrl,
+                        uri: imagesUrl[0],
                     }}
                     loader={<ActivityIndicator />}
                     animationDuration={300}
