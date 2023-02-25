@@ -20,7 +20,7 @@ import { addProduct } from "../../redux/slices/cartSlice";
 import { Toast } from "react-native-ui-lib";
 import { Carousel } from "react-native-ui-lib";
 
-import { FullProductFeature } from "../../components/Catalog/FullProductFeature";
+import { FullProductSpecifications } from "../../components/Catalog/FullProductSpecifications";
 
 import { fetchFullProductData } from "../../redux/slices/fullProductSlice";
 
@@ -33,8 +33,15 @@ const FullProductScreen = () => {
     }); */
     const route = useRoute();
 
-    const { title, brakeType, price, description, imagesUrl } = route.params;
-    console.log(brakeType);
+    const {
+        title,
+        frameSizes,
+        colors,
+        price,
+        description,
+        imagesUrl,
+        specifications,
+    } = route.params;
 
     const dispatch = useDispatch();
 
@@ -92,22 +99,57 @@ const FullProductScreen = () => {
                 <Text className="my-2 text-gray-100 font-bold text-xl">
                     {title}
                 </Text>
-
+                {frameSizes && (
+                    <View className="flex-row justify-between w-4/5">
+                        <Text className="my-2 text-gray-100 text-lg">
+                            Размеры рамы:
+                        </Text>
+                        {frameSizes.map((item, idx) => (
+                            <Text
+                                key={idx}
+                                className="my-2 text-gray-100 text-lg"
+                            >
+                                {item}
+                            </Text>
+                        ))}
+                    </View>
+                )}
+                {colors && (
+                    <View className="flex-row justify-between w-4/5">
+                        <Text className="my-2 text-gray-100 text-lg">
+                            Цвета:
+                        </Text>
+                        {colors.map((item, idx) => (
+                            <Text
+                                key={idx}
+                                className="my-2 text-gray-100 text-lg"
+                            >
+                                {item}
+                            </Text>
+                        ))}
+                    </View>
+                )}
                 <Text className="my-2 text-gray-400 font-bold text-sm p-4">
                     {description}
                 </Text>
-                <View className="w-11/12">
-                    <ExpandableSection
-                        expanded={showInfo}
-                        sectionHeader={
-                            <Text className="text-blue-400 text-xl text-left">
-                                Характеристики
-                            </Text>
-                        }
-                        children={<FullProductFeature feature={route.params} />}
-                        onPress={() => setShowInfo(!showInfo)}
-                    ></ExpandableSection>
-                </View>
+                {specifications && (
+                    <View className="w-11/12">
+                        <ExpandableSection
+                            expanded={showInfo}
+                            sectionHeader={
+                                <Text className="text-blue-400 text-xl text-left">
+                                    Характеристики
+                                </Text>
+                            }
+                            children={
+                                <FullProductSpecifications
+                                    specifications={specifications}
+                                />
+                            }
+                            onPress={() => setShowInfo(!showInfo)}
+                        ></ExpandableSection>
+                    </View>
+                )}
 
                 <Text className="my-2 text-white font-bold text-xl">
                     цена {price} руб.

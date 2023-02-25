@@ -12,6 +12,11 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { fetchBlogsData } from "../../redux/slices/blogsSlice";
 
+import { TestHomeScreenCatalog } from "../../components/TestFeatures/TestHomeScreenCatalog"; //TEST
+import { TestBrandsHomeScreen } from "../../components/TestFeatures/TestBrandsHomeScreen"; // TEST
+import { TestOpenWhatsAppWidget } from "../../components/TestFeatures/TestOpenWhatsAppWidget"; // TEST
+import { TestCallPhoneNumber } from "../../components/TestFeatures/TestCallPhoneNumber";
+
 const HomeScreen = ({ navigation }) => {
     const dispatch = useDispatch();
 
@@ -54,7 +59,24 @@ const HomeScreen = ({ navigation }) => {
                         ))}
                     </Carousel>
                 </View>
+                {/* Test */}
+                <Text className="text-white font-bold text-2xl text-left mb-5">
+                    Наши товары
+                </Text>
+                <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+                    <TestHomeScreenCatalog />
+                </ScrollView>
+                <Text className="text-white font-bold text-2xl text-left my-5">
+                    Бренды
+                </Text>
+                <TestBrandsHomeScreen />
+                {/* Test */}
                 <BlogSection navigation={navigation} />
+                <Text className="text-white font-bold text-2xl text-left p-2">
+                    Связаться с нами:
+                </Text>
+                <TestOpenWhatsAppWidget />
+                <TestCallPhoneNumber />
             </ScrollView>
         </SafeAreaView>
     );

@@ -12,12 +12,12 @@ const BlogSection = ({ navigation }) => {
     const blogsData = useSelector((state) => state.blogs.blogs);
 
     return (
-        <View className="p-2">
-            <View className="flex-row w-50 justify-between">
+        <View className="p-2 mt-10">
+            <View className="flex-row w-50 justify-between mb-5">
                 <Text className="font-bold text-2xl text-white">Блог</Text>
                 <View className="w-40 h-8">
                     <Pressable
-                        className="rounded-lg bg-indigo-500 h-full"
+                        className="h-full"
                         onPress={() =>
                             navigation.navigate("Blogs", {
                                 blogsData,
@@ -30,8 +30,8 @@ const BlogSection = ({ navigation }) => {
                     </Pressable>
                 </View>
             </View>
-            <ScrollView horizontal>
-                <View className="flex-row flex-wrap my-10">
+            <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+                <View className="flex-row flex-wrap">
                     {blogsData?.map((item) => (
                         <BlogSectionItem
                             key={item.id}

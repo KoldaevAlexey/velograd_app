@@ -3,16 +3,18 @@ import axios from "axios";
 
 export const fetchProductsData = createAsyncThunk(
     "products/fetchProductsData",
-    async (title) => {
+    async ({ title, selectedSorting }) => {
         const { data } = await axios.get(
-            `http://10.0.2.2:1337/api/items?filters[type][$contains]=${title}&sort=price:asc`
+            `http://10.0.2.2:1337/api/items?filters[type][$contains]=${title}&sort=price:${selectedSorting}`
         );
         return data;
     }
 );
 
 const initialState = {
-    products: null,
+    products: {
+        data: [],
+    },
 };
 
 export const productsSlice = createSlice({

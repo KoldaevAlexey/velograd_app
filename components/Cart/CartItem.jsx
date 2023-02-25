@@ -8,16 +8,15 @@ import {
 } from "../../redux/slices/cartSlice";
 import { useSelector, useDispatch } from "react-redux";
 
-const CartItem = ({ id, price, title, imageUrl, count }) => {
+const CartItem = ({ id, price, title, imagesUrl, count }) => {
     const dispatch = useDispatch();
-
     return (
         <ScrollView>
             <View className="flex-row">
                 <View className="w-48 h-32 my-5 mr-2">
                     <Image
                         source={{
-                            uri: imageUrl,
+                            uri: imagesUrl[0],
                         }}
                         className="w-full h-full rounded-2xl"
                     />

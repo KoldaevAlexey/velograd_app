@@ -5,6 +5,7 @@ import { CatalogScreen } from "./CatalogScreen";
 import { ProductsScreen } from "./ProductsScreen";
 import { FullProductScreen } from "./FullProductScreen";
 import { TypesProductScreen } from "./TypesProductScreen";
+import { SearchScreen } from "../Search/SearchScreen";
 
 const CatalogStackScreen = () => {
     const CatalogStack = createNativeStackNavigator();
@@ -32,6 +33,7 @@ const CatalogStackScreen = () => {
                 name="FullProduct"
                 component={FullProductScreen}
             />
+            <CatalogStack.Screen name="SearchScreen" component={SearchScreen} />
         </CatalogStack.Navigator>
     );
 };

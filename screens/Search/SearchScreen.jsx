@@ -1,32 +1,33 @@
-import { View, Text } from "react-native";
+import { View, Text, ScrollView } from "react-native";
 import React from "react";
-import { ScrollView } from "react-native-gesture-handler";
 
 import { sortingTypes } from "../../utils/sortingTypes";
 
 import { useRoute } from "@react-navigation/native";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchProductsData } from "../../redux/slices/productsSlice";
+
+import { useSelector, useDispatch } from "react-redux";
+
+import { fetchSearchData } from "../../redux/slices/searchSlice";
 
 import { Product } from "../../components/Catalog/Product";
 
 import { Picker } from "@react-native-picker/picker";
 
-const ProductsScreen = ({ navigation }) => {
+const SearchScreen = ({ navigation }) => {
     const [selectedSorting, setSelectedSorting] = React.useState("asc");
-    const dispatch = useDispatch();
     const route = useRoute();
-
-    const products = useSelector((state) => state.products.products);
+    const dispatch = useDispatch();
 
     React.useEffect(() => {
         try {
-            const title = route.params.title;
-            dispatch(fetchProductsData({ title, selectedSorting }));
+            const title = route.params.value;
+            dispatch(fetchSearchData({ title, selectedSorting }));
         } catch (e) {
             console.log(e.message);
         }
     }, [selectedSorting]);
+
+    const products = useSelector((state) => state.search.searchProducts);
 
     const content = (
         <>
@@ -50,33 +51,33 @@ const ProductsScreen = ({ navigation }) => {
                     ))}
                 </Picker>
             </View>
-            <Text className="my-5 text-center font-bold text-xl text-white">
-                {route.params.title}
+            <Text className="text-white text-lg text-center my-5">
+                {route.params.value.toUpperCase()}
             </Text>
             <View className="flex-row flex-wrap">
                 {products?.data.map((item) => (
                     <Product
                         key={item.id}
-                        navigation={navigation}
                         id={item.id}
                         attributes={item.attributes}
+                        navigation={navigation}
                     />
                 ))}
             </View>
         </>
     );
 
-    const productsEmpty = (
+    const nothingFound = (
         <Text className="text-white text-2xl text-center font-bold mt-52">
-            Товар мчится, скоро добавим
+            По вашему запросу ничего не найдено
         </Text>
     );
 
     return (
         <ScrollView className="bg-slate-900 h-full">
-            {products.data.length > 0 ? content : productsEmpty}
+            {products.data.length > 0 ? content : nothingFound}
         </ScrollView>
     );
 };
 
-export { ProductsScreen };
+export { SearchScreen };

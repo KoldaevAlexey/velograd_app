@@ -7,22 +7,22 @@ const TypesProductItem = ({ navigation, title, imageUrl }) => {
 
     return (
         <TouchableOpacity
-            className="mt-2 flex-row bg-slate-800 p-2 rounded-xl h-16"
+            className="w-48 h-40 my-2 flex-col bg-slate-800 p-1 rounded-2xl justify-between items-center"
             onPress={() =>
                 navigation.navigate("Products", {
                     title,
                 })
             }
         >
-            {/* <Image
-                source={{
-                    uri: imageUrl,
-                }}
-                className="w-28 h-28 rounded-2xl"
-            /> */}
-            <Text className="ml-2 text-gray-100 font-bold text-xl">
-                {title}
-            </Text>
+            <Text className="text-gray-100 font-bold text-lg">{title}</Text>
+            <View className="w-48 h-28">
+                <Image
+                    source={{
+                        uri: imageUrl,
+                    }}
+                    className="w-full h-full rounded-2xl"
+                />
+            </View>
         </TouchableOpacity>
     );
 };

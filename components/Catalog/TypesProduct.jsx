@@ -18,14 +18,16 @@ const TypesProduct = ({ navigation }) => {
 
     return (
         <ScrollView>
-            {typesProduct?.map((item, idx) => (
-                <TypesProductItem
-                    key={idx}
-                    title={item.title}
-                    imageUrl={item.imageUrl}
-                    navigation={navigation}
-                />
-            ))}
+            <View className="flex-row flex-wrap justify-around">
+                {typesProduct?.map((item, idx) => (
+                    <TypesProductItem
+                        key={idx}
+                        title={item.title}
+                        imageUrl={item.imageUrl}
+                        navigation={navigation}
+                    />
+                ))}
+            </View>
         </ScrollView>
     );
 };
