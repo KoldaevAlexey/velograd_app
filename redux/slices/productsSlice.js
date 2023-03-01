@@ -1,11 +1,13 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
+import { ROOT_API_ROUTE } from "../../utils/consts";
+
 export const fetchProductsData = createAsyncThunk(
     "products/fetchProductsData",
     async ({ title, selectedSorting }) => {
         const { data } = await axios.get(
-            `http://10.0.2.2:1337/api/items?filters[type][$contains]=${title}&sort=price:${selectedSorting}`
+            `${ROOT_API_ROUTE}items?filters[type][$contains]=${title}&sort=price:${selectedSorting}`
         );
         return data;
     }

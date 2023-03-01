@@ -1,10 +1,12 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
+import { ROOT_API_ROUTE, BLOGS_ROUTE } from "../../utils/consts.js";
+
 export const fetchBlogsData = createAsyncThunk(
     "blogs/fetchBlogsData",
     async () => {
-        const { data } = await axios.get(`http://10.0.2.2:1337/api/blogs`);
+        const { data } = await axios.get(`${ROOT_API_ROUTE}${BLOGS_ROUTE}`);
         return data.data;
     }
 );

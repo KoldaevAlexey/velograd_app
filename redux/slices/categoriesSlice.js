@@ -1,10 +1,16 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
+import {
+    ROOT_API_ROUTE,
+    DETAILS_LIST_ROUTE,
+    BIKE_SELECTION_ROUTE,
+} from "../../utils/consts.js";
+
 export const fetchCategoriesData = createAsyncThunk(
     "categories/fetchCategoriesData",
     async () => {
-        const { data } = await axios.get(`http://10.0.2.2:1337/api/categories`);
+        const { data } = await axios.get(`${ROOT_API_ROUTE}categories`);
         const editedData = data.data[0].attributes.categories;
         return editedData;
     }

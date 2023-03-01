@@ -1,8 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
-import { ROOT_API_ROUTE } from "../../utils/consts";
-import { BIKE_SELECTION_ROUTE } from "../../utils/consts";
+import { BIKE_SELECTION_ROUTE, ROOT_API_ROUTE } from "../../utils/consts";
 
 export const fetchBikeSelectionData = createAsyncThunk(
     "bikeSelection/fetchBikeSelectionData",

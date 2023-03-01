@@ -22,8 +22,6 @@ import { Carousel } from "react-native-ui-lib";
 
 import { FullProductSpecifications } from "../../components/Catalog/FullProductSpecifications";
 
-import { fetchFullProductData } from "../../redux/slices/fullProductSlice";
-
 const FullProductScreen = () => {
     const [isVisible, setIsVisible] = React.useState(false);
     const [showInfo, setShowInfo] = React.useState(false);

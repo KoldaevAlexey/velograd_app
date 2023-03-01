@@ -1,6 +1,8 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
+import { ROOT_API_ROUTE } from "../../utils/consts";
+
 export const fetchSearchData = createAsyncThunk(
     "search/fetchSearchData",
     async ({ title, selectedSorting }) => {
@@ -8,7 +10,7 @@ export const fetchSearchData = createAsyncThunk(
             return { data: [] };
         }
         const { data } = await axios.get(
-            `http://10.0.2.2:1337/api/items?filters[title][$contains]=${title}&sort=price:${selectedSorting}`
+            `${ROOT_API_ROUTE}items?filters[title][$contains]=${title}&sort=price:${selectedSorting}`
         );
         return data;
     }
