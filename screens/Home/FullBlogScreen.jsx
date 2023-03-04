@@ -1,11 +1,11 @@
 import { View, Text, ScrollView, ActivityIndicator } from "react-native";
 import React from "react";
 
-import { useRoute } from "@react-navigation/native";
-
 import { AnimatedImage } from "react-native-ui-lib";
 
-const FullBlogScreen = ({ navigation }) => {
+import { useRoute } from "@react-navigation/native";
+
+const FullBlogScreen = () => {
     const route = useRoute();
 
     return (

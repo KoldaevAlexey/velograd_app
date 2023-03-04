@@ -1,14 +1,11 @@
-import { View, Text, ScrollView, Button, Pressable } from "react-native";
+import { View, Text, ScrollView, Pressable } from "react-native";
 import React from "react";
 
-import { blogCardData } from "../../assets/mockData/data";
 import { BlogSectionItem } from "./BlogSectionItem";
 
-import { useRoute } from "@react-navigation/native";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 
 const BlogSection = ({ navigation }) => {
-    const route = useRoute();
     const blogsData = useSelector((state) => state.blogs.blogs);
 
     return (

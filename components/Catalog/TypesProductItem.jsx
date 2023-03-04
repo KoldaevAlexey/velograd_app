@@ -1,5 +1,6 @@
 import { View, Text, TouchableOpacity, Image } from "react-native";
 import React from "react";
+
 import { useRoute } from "@react-navigation/native";
 
 const TypesProductItem = ({ navigation, title, imageUrl }) => {

@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { RootState } from "../store";
 
 const initialState = {
     cartItems: [],
@@ -43,6 +44,8 @@ export const cartSlice = createSlice({
         },
     },
 });
+
+export const selectCartItems = (state: RootState) => state.cart;
 
 export const {
     addProduct,

@@ -1,11 +1,4 @@
-import {
-    View,
-    Text,
-    TouchableOpacity,
-    Image,
-    ActivityIndicator,
-    Pressable,
-} from "react-native";
+import { View, Text, ActivityIndicator, Pressable } from "react-native";
 import React from "react";
 
 import { AnimatedImage } from "react-native-ui-lib";

@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import cart from "./slices/cartSlice";
+import cart from "./slices/cartSlice.js";
 import products from "./slices/productsSlice";
 import categories from "./slices/categoriesSlice";
 import blogs from "./slices/blogsSlice";
@@ -16,3 +16,6 @@ export const store = configureStore({
         search,
     },
 });
+
+export type RootState = ReturnType<typeof store.getState>;
+export type AppDispatch = typeof store.dispatch;

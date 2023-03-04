@@ -11,6 +11,7 @@ import { AnimatedImage } from "react-native-ui-lib";
 
 const Product = ({ navigation, id, attributes }) => {
     const { title, imagesUrl, price, type } = attributes;
+
     return (
         <TouchableOpacity
             className="w-44 h-56 ml-5 my-2 flex-col items-center bg-slate-800 rounded-xl"

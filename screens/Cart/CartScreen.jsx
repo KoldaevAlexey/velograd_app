@@ -1,14 +1,7 @@
-import {
-    View,
-    Text,
-    SafeAreaView,
-    Image,
-    Button,
-    ScrollView,
-} from "react-native";
+import { SafeAreaView } from "react-native";
 import React from "react";
 
-import { Cart } from "../components/Cart/Cart";
+import { Cart } from "../../components/Cart/Cart";
 
 const CartScreen = () => {
     return (

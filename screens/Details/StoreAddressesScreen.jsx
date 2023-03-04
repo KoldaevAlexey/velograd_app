@@ -1,9 +1,9 @@
 import { View, Text, ScrollView } from "react-native";
 import React from "react";
 
-import { StoreAdressesList } from "../../components/Details/StoreAdressesList";
-
 import { useRoute } from "@react-navigation/native";
+
+import { StoreAdressesList } from "../../components/Details/StoreAdressesList";
 
 const StoreAddressesScreen = () => {
     const route = useRoute();

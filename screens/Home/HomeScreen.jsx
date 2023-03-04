@@ -1,21 +1,19 @@
-import { View, Text, TextInput, Image, ScrollView } from "react-native";
-import React, { useLayoutEffect } from "react";
+import { View, Text, Image, ScrollView } from "react-native";
+import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 import { Carousel } from "react-native-ui-lib";
 
 import { carouselImages } from "../../assets/mockData/data";
-import { BlogSection } from "../../components/Blog/BlogSection";
 
-import { useRoute } from "@react-navigation/native";
-import { useDispatch, useSelector } from "react-redux";
-
+import { useDispatch } from "react-redux";
 import { fetchBlogsData } from "../../redux/slices/blogsSlice";
 
 import { TestHomeScreenCatalog } from "../../components/TestFeatures/TestHomeScreenCatalog"; //TEST
 import { TestBrandsHomeScreen } from "../../components/TestFeatures/TestBrandsHomeScreen"; // TEST
 import { TestOpenWhatsAppWidget } from "../../components/TestFeatures/TestOpenWhatsAppWidget"; // TEST
 import { TestCallPhoneNumber } from "../../components/TestFeatures/TestCallPhoneNumber";
+import { BlogSection } from "../../components/Blog/BlogSection";
 
 const HomeScreen = ({ navigation }) => {
     const dispatch = useDispatch();

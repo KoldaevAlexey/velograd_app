@@ -1,3 +1,4 @@
+import React from "react";
 import {
     View,
     Text,
@@ -6,12 +7,12 @@ import {
     Button,
     ScrollView,
 } from "react-native";
+
 import { useSelector, useDispatch } from "react-redux";
-import { clearProducts } from "../../redux/slices/cartSlice";
-import React from "react";
+import { clearProducts } from "../../redux/slices/cartSlice.js";
+import { totalCount, totalPrice } from "../../utils/cartCalculate";
 
 import { CartItem } from "./CartItem";
-import { totalCount, totalPrice } from "../../utils/cartCalculate";
 
 const Cart = () => {
     const cartItems = useSelector((state) => state.cart.cartItems);

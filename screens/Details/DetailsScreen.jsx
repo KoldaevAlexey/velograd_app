@@ -1,7 +1,6 @@
-import { View, Text, ScrollView, TouchableOpacity } from "react-native";
-import React, { useLayoutEffect } from "react";
+import { ScrollView, TouchableOpacity } from "react-native";
+import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { useNavigation } from "@react-navigation/native";
 
 import { useDispatch, useSelector } from "react-redux";
 import { fetchDetailsListData } from "../../redux/slices/detailsSlice";
@@ -9,10 +8,9 @@ import { fetchDetailsListData } from "../../redux/slices/detailsSlice";
 import { DetailsScreenItem } from "../../components/Details/DetailsScreenItem";
 
 const DetailsScreen = ({ navigation }) => {
-    //const navigation = useNavigation();
     const dispatch = useDispatch();
 
-    useLayoutEffect(() => {
+    React.useLayoutEffect(() => {
         navigation.setOptions({
             headerShown: false,
         });

@@ -1,9 +1,9 @@
 import { View, Text, ScrollView } from "react-native";
 import React from "react";
 
-import { BlogsScreenItem } from "../../components/Blog/BlogsScreenItem";
-
 import { useDispatch, useSelector } from "react-redux";
+
+import { BlogsScreenItem } from "../../components/Blog/BlogsScreenItem";
 
 const BlogsScreen = ({ navigation }) => {
     const blogsData = useSelector((state) => state.blogs.blogs);

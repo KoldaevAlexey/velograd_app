@@ -9,26 +9,21 @@ import {
 } from "react-native";
 import React from "react";
 import { ScrollView } from "react-native-gesture-handler";
-import { useRoute } from "@react-navigation/native";
-import { SafeAreaView } from "react-native-safe-area-context";
 
 import { ExpandableSection } from "react-native-ui-lib";
-
-import { useSelector, useDispatch } from "react-redux";
-import { addProduct } from "../../redux/slices/cartSlice";
-
 import { Toast } from "react-native-ui-lib";
 import { Carousel } from "react-native-ui-lib";
+
+import { useRoute } from "@react-navigation/native";
+import { useDispatch } from "react-redux";
+import { addProduct } from "../../redux/slices/cartSlice.js";
 
 import { FullProductSpecifications } from "../../components/Catalog/FullProductSpecifications";
 
 const FullProductScreen = () => {
     const [isVisible, setIsVisible] = React.useState(false);
     const [showInfo, setShowInfo] = React.useState(false);
-    /* const [styleAddButton, setStyleAddButton] = React.useState({
-        color: "bg-orange-500",
-        text: "добавить",
-    }); */
+
     const route = useRoute();
 
     const {
@@ -43,23 +38,8 @@ const FullProductScreen = () => {
 
     const dispatch = useDispatch();
 
-    /* React.useEffect(() => {
-        try {
-            dispatch(fetchFullProductData(route.params.id));
-        } catch (e) {
-            console.log(e.message);
-        }
-    }, []); */
-
-    /*  const fullProduct = useSelector((state) => state.fullProduct.fullProduct);
-    const cartItems = useSelector((state) => state.cart.cartItems); */
-
     const handlerAddProduct = () => {
         dispatch(addProduct(route.params));
-        /* setStyleAddButton({
-            color: "bg-lime-900",
-            text: "добавлен в корзину",
-        }); */
         setIsVisible(true);
     };
 

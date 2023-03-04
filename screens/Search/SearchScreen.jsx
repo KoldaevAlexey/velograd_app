@@ -1,17 +1,14 @@
 import { View, Text, ScrollView } from "react-native";
 import React from "react";
 
+import { useRoute } from "@react-navigation/native";
+import { useSelector, useDispatch } from "react-redux";
+import { fetchSearchData } from "../../redux/slices/searchSlice";
 import { sortingTypes } from "../../utils/sortingTypes";
 
-import { useRoute } from "@react-navigation/native";
-
-import { useSelector, useDispatch } from "react-redux";
-
-import { fetchSearchData } from "../../redux/slices/searchSlice";
+import { Picker } from "@react-native-picker/picker";
 
 import { Product } from "../../components/Catalog/Product";
-
-import { Picker } from "@react-native-picker/picker";
 
 const SearchScreen = ({ navigation }) => {
     const [selectedSorting, setSelectedSorting] = React.useState("asc");

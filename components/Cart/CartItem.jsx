@@ -5,11 +5,12 @@ import {
     incrementCount,
     decrementCount,
     removeProduct,
-} from "../../redux/slices/cartSlice";
+} from "../../redux/slices/cartSlice.js";
 import { useSelector, useDispatch } from "react-redux";
 
 const CartItem = ({ id, price, title, imagesUrl, count }) => {
     const dispatch = useDispatch();
+
     return (
         <ScrollView>
             <View className="flex-row">
