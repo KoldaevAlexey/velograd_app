@@ -5,7 +5,7 @@ import {
     ROOT_API_ROUTE,
     DETAILS_LIST_ROUTE,
     BIKE_SELECTION_ROUTE,
-} from "../../utils/consts.js";
+} from "../../utils/consts.ts";
 
 export const fetchDetailsListData = createAsyncThunk(
     "detailsList/fetchDetailsListData",

@@ -7,7 +7,7 @@ import Ionicons from "@expo/vector-icons/Ionicons";
 import { HomeStackScreen } from "./screens/Home/HomeStackScreen";
 import { DetailsStackScreen } from "./screens/Details/DetailsStackScreen";
 import { CatalogStackScreen } from "./screens/Catalog/CatalogStackScreen";
-import { CartScreen } from "./screens/CartScreen";
+import { CartScreen } from "./screens/Cart/CartScreen";
 
 import { store } from "./redux/store";
 import { Provider } from "react-redux";

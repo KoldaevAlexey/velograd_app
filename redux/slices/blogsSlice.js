@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
-import { ROOT_API_ROUTE, BLOGS_ROUTE } from "../../utils/consts.js";
+import { ROOT_API_ROUTE, BLOGS_ROUTE } from "../../utils/consts.ts";
 
 export const fetchBlogsData = createAsyncThunk(
     "blogs/fetchBlogsData",
